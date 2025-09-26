@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <title>نتيجتك</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <style>
+      #score {
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 30px;
+      }
+      input[type="text"] {
+        width: 80%;
+        padding: 12px 15px;
+        border-radius: 12px;
+        border: 2px solid #00c865;
+        font-size: 16px;
+        outline: none;
+        margin-bottom: 20px;
+        transition: 0.3s;
+        text-align: center;
+      }
+      input[type="text"]:focus {
+        border-color: #009e50;
+        box-shadow: 0 0 12px rgba(0, 158, 80, 0.5);
+      }
+      button {
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #006c35, #00c865);
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      button:hover {
+        transform: scale(1.08);
+        background: linear-gradient(135deg, #009e50, #00f080);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>:نتيجتك</h2>
+      <p id="score"></p>
+      <input type="text" id="name" placeholder="اكتب اسمك" />
+      <button onclick="saveResult()">حفظ في لوحة الشرف</button>
+    </div>
+    <script>
+      const score = localStorage.getItem("score");
+      document.getElementById("score").textContent = "جمعت " + score + " نقاط";
+      function saveResult() {
+        let name = document.getElementById("name").value || "لاعب مجهول";
+        let leaderboard = JSON.parse(
+          localStorage.getItem("leaderboard") || "[]"
+        );
+        leaderboard.push({ name, score: parseInt(score) });
+        localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
+        window.location.href = "leaderboard.html";
+      }
+    </script>
+  </body>
+</html>

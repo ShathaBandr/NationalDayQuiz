@@ -1,0 +1,155 @@
+/* الإعدادات الأساسية */
+* {
+  font-family: "Tahoma", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../images/index-logo.jpg");
+  background-color: #ffffff; /* لون احتياطي لو فيه فراغ */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container {
+  background-image: url("../images/index.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  overflow: visible;
+  position: relative;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* ظل خارجي */
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(1px) brightness(0.8); /* تغبيش + تعتيم */
+  background: rgba(255, 255, 255, 0.1); /* شفافية */
+  border-radius: 50px;
+}
+
+.container > * {
+  position: relative; /* يخلي المحتوى فوق ::before */
+  z-index: 1;
+}
+
+/* العناوين */
+h1,
+h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4); /* لمسة ظل */
+}
+
+/* الأزرار */
+button {
+  background: linear-gradient(135deg, #006c35, #009e50);
+  color: #fff;
+  border: none;
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #009e50, #00c865);
+  transform: scale(1.08);
+}
+
+/* إدخال الاسم */
+input[type="text"] {
+  padding: 12px;
+  border: 2px solid #006c35;
+  border-radius: 8px;
+  font-size: 16px;
+  margin: 15px 0;
+  width: 70%;
+  max-width: 320px;
+  text-align: center;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #009e50;
+  box-shadow: 0 0 10px rgba(0, 158, 80, 0.5);
+}
+
+/* لوحة الشرف */
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul li {
+  background: #ffffffd9; /* أبيض شبه شفاف */
+  margin: 8px 0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  width: 75%;
+  max-width: 400px;
+  font-size: 18px;
+  border-left: 6px solid gold;
+  text-align: right;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+ul li:hover {
+  transform: translateY(-4px);
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.card {
+  background: #ffffffd9; /* أبيض شبه شفاف */
+  width: 70%;
+  max-width: 400px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, background 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  background: #f1f1f1;
+}

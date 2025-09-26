@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة الشرف</title>
+  <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>🏆 لوحة الشرف </h2>
+    <ul id="list"></ul>
+  </div>
+
+  <script>
+    let leaderboard = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+    leaderboard.sort((a,b) => b.score - a.score);
+
+    document.getElementById("list").innerHTML = leaderboard
+      .map(p => `<li>${p.name} - ${p.score} نقاط</li>`).join("");
+  </script>
+</body>
+</html>
